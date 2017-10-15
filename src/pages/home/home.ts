@@ -6,10 +6,12 @@ import { Base64 } from '@ionic-native/base64';
 
 import { ModalController } from 'ionic-angular';
 import { DfhResultsModal } from '../home/dfhResultsModal';
+import { DfhService } from '../services/dfhservice';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers: [DfhService]
 })
 export class HomePage {
 
@@ -17,7 +19,7 @@ export class HomePage {
   genero = 'm';
   idade = 6;
 
-  constructor(public modalCtrl: ModalController, private camera: Camera, private imagePicker: ImagePicker, private base64: Base64) {
+  constructor(public modalCtrl: ModalController, private camera: Camera, private imagePicker: ImagePicker, private base64: Base64, private dfhService: DfhService) {
 
   }
 
@@ -58,9 +60,7 @@ export class HomePage {
   }
 
   showResults() {
-    console.log("Avaliar")
-    console.log(this.genero)
-    console.log(this.idade)
+    this.dfhService.setAvaliado(this.idade, this.genero);
     let resultsModal = this.modalCtrl.create(DfhResultsModal);
     resultsModal.present();
   } 

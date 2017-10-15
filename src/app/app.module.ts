@@ -8,6 +8,7 @@ import { InstructionsPage } from '../pages/instructions/instructions';
 import { HomePage } from '../pages/home/home';
 import { DfhResultsModal } from '../pages/home/dfhResultsModal';
 import { TabsPage } from '../pages/tabs/tabs';
+import { DfhService } from '../pages/services/dfhservice'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -43,6 +44,7 @@ import { Base64 } from '@ionic-native/base64';
     Camera,
     ImagePicker,
     Base64,
+    DfhService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
