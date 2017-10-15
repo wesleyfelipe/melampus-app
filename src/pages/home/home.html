@@ -61,7 +61,7 @@
 
   <ion-row>
     <ion-col text-center>
-<button ion-button full large round (click)="showResults()">
+<button ion-button full large round (click)="showResults()" [disabled]="!base64Image">
         <ion-icon name="play"></ion-icon>
         Avaliar
   </button>

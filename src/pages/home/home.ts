@@ -10,8 +10,7 @@ import { DfhService } from '../services/dfhservice';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
-  providers: [DfhService]
+  templateUrl: 'home.html'
 })
 export class HomePage {
 
@@ -60,9 +59,10 @@ export class HomePage {
   }
 
   showResults() {
-    this.dfhService.setAvaliado(this.idade, this.genero);
+    this.dfhService.avaliar(this.idade, this.genero, this.base64Image);
     let resultsModal = this.modalCtrl.create(DfhResultsModal);
     resultsModal.present();
+
   } 
 
 }
