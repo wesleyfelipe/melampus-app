@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Início</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h2>Bem vindo ao e-DFH.</h2>
+
+  <p>Para realizar a análise automática do DFH (Desenho da Figura Humana), informe a idade e o gênero do autor do desenho. </p>
+
+   <ion-row>
+    <ion-col text-center>
+
+  <ion-label color="primary">Gênero*</ion-label>
+  <ion-list radio-group>
+    <ion-item>
+      <ion-label>Menino</ion-label>
+      <ion-radio value="m" checked></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Menina</ion-label>
+      <ion-radio value="f"></ion-radio>
+    </ion-item>
+  </ion-list>
+  </ion-col>
+
+  <ion-col text-center>
+
+  <ion-label color="primary">Idade*</ion-label>
+   <ion-item>
+    <ion-range min="6" max="12">
+      <ion-label range-left>6</ion-label>
+      <ion-label range-right>12</ion-label>
+    </ion-range>
+  </ion-item>
+
+  </ion-col>
+  </ion-row>
+
+   <ion-row>
+    <ion-col text-center>
+
+  <button ion-button large (click)="takePicture()">
+        <ion-icon name="camera"></ion-icon>
+        Câmera
+  </button>
+  <button ion-button large (click)="getFromGallery()">
+        <ion-icon name="images"></ion-icon>
+        Galeria
+  </button>
+
+  </ion-col>
+
+  </ion-row>
+
+  <p>Você pode utilizar a câmera do seu dispositivo ou acessar a galeria de imagens para realizar o upload do desenho. </p>
+
+  <img src="{{ base64Image }}" />
+
+  <p>Os campos identificação e observações são opcionais.</p>
+
+   <ion-row>
+    <ion-col text-center>
+
+     <ion-item>
+      <ion-input placeholder="Identificação"></ion-input>
+    </ion-item>
+
+    </ion-col>
+
+    <ion-col text-center>
+      <ion-item>
+        <ion-textarea placeholder="Observações"></ion-textarea>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col text-center>
+<button ion-button full large (click)="showResults()">
+        <ion-icon name="play"></ion-icon>
+        Avaliar
+  </button>
+    </ion-col>
+    </ion-row>
+
+</ion-content>
