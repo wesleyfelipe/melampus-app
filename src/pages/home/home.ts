@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker';
-import { Base64 } from '@ionic-native/base64';
 
 import { ModalController } from 'ionic-angular';
 import { DfhResultsModal } from '../home/dfhResultsModal';
@@ -18,7 +16,7 @@ export class HomePage {
   genero = 'm';
   idade = 6;
 
-  constructor(public modalCtrl: ModalController, private camera: Camera, private imagePicker: ImagePicker, private base64: Base64, private dfhService: DfhService) {
+  constructor(public modalCtrl: ModalController, private camera: Camera, private dfhService: DfhService) {
 
   }
 
@@ -35,27 +33,6 @@ export class HomePage {
       }, (err) => {
         console.log(JSON.stringify(err));
       });
-  }
-
-  getFromGallery(){
-    const options: ImagePickerOptions = {
-          maximumImagesCount: 1
-        }
-
-    this.imagePicker.getPictures(options).then((results) => {
-      for (var i = 0; i < results.length; i++) {
-
-        this.base64Image = results[i];
-
-          //this.base64.encodeFile(results[i]).then((base64File: string) => {
-          //  this.base64Image = 'data:image/jpeg;base64,' + base64File;
-          //}, (err) => {
-          //  console.log(err);
-          //});
-      }
-    }, (err) => { 
-      console.log(JSON.stringify(err));
-    });
   }
 
   showResults() {

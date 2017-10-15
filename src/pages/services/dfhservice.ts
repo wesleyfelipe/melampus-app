@@ -1,5 +1,8 @@
 
 import {Injectable} from '@angular/core';
+import { FileUploadOptions } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+
 
 @Injectable()
 export class DfhService {  
@@ -25,7 +28,7 @@ export class DfhService {
     }
 
     getIdade(){
-     return this.idade;
+        return this.idade;
     }
 
     getGenero(){
@@ -40,8 +43,15 @@ export class DfhService {
         return this.resultadoAvaliacao;
     }
 
+    callEcDfhF912Api(){
+        console.log("Call API")
+    }
+
     avaliar(idade, genero, base64Image){
         this.setAvaliado(idade, genero, base64Image);
+
+        this.mensagemErro = null;
+        this.resultadoAvaliacao = null;
 
         if(this.genero === 'm'){
             this.mensagemErro = "O Melampus ainda não está preparado para avaliar meninos.";
@@ -50,8 +60,7 @@ export class DfhService {
             this.mensagemErro = "O Melampus ainda não está preparado para avaliar crianças menores de 9 anos."
             this.resultadoAvaliacao = null;
         } else {
-            this.mensagemErro = null;
-            
+            this.callEcDfhF912Api()
         }
 
     }

@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler, Platform } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { FileTransfer } from '@ionic-native/file-transfer';
 
 import { AboutPage } from '../pages/about/about';
 import { InstructionsPage } from '../pages/instructions/instructions';
@@ -45,6 +46,7 @@ import { Base64 } from '@ionic-native/base64';
     ImagePicker,
     Base64,
     DfhService,
+    FileTransfer,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

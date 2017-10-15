@@ -42,20 +42,15 @@
    <ion-row>
     <ion-col text-center>
 
-  <button ion-button round (click)="takePicture()">
-        <ion-icon name="camera"></ion-icon>
-        Câmera
-  </button>
-  <button ion-button round (click)="getFromGallery()">
-        <ion-icon name="images"></ion-icon>
-        Galeria
-  </button>
-
-  </ion-col>
+      <button ion-button round (click)="takePicture()">
+            <ion-icon name="camera"></ion-icon>
+            Câmera
+      </button>
+    </ion-col>
 
   </ion-row>
 
-  <p>Você pode utilizar a câmera do seu dispositivo ou acessar a galeria de imagens para realizar o upload do desenho. </p>
+  <p>Utilize a câmera do seu dispositivo para realizar o upload do desenho. </p>
 
   <img src="{{ base64Image }}" />
 
