@@ -42,13 +42,15 @@
    <ion-row>
     <ion-col text-center>
 
-  <button ion-button large (click)="takePicture()">
+  <button ion-button round (click)="takePicture()">
         <ion-icon name="camera"></ion-icon>
         Câmera
   </button>
-  <button ion-button large (click)="getFromGallery()">
+  <button ion-button round (click)="getFromGallery()">
         <ion-icon name="images"></ion-icon>
+        <div>
         Galeria
+        </div>
   </button>
 
   </ion-col>
@@ -59,27 +61,9 @@
 
   <img src="{{ base64Image }}" />
 
-  <p>Os campos identificação e observações são opcionais.</p>
-
-   <ion-row>
-    <ion-col text-center>
-
-     <ion-item>
-      <ion-input placeholder="Identificação"></ion-input>
-    </ion-item>
-
-    </ion-col>
-
-    <ion-col text-center>
-      <ion-item>
-        <ion-textarea placeholder="Observações"></ion-textarea>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-
   <ion-row>
     <ion-col text-center>
-<button ion-button full large (click)="showResults()">
+<button ion-button full large round (click)="showResults()">
         <ion-icon name="play"></ion-icon>
         Avaliar
   </button>

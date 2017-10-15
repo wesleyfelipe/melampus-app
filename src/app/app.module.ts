@@ -13,7 +13,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
-import { FileTransfer } from ionic-native/file-transfer;
 import { Base64 } from '@ionic-native/base64';
 
 @NgModule({
@@ -43,7 +42,6 @@ import { Base64 } from '@ionic-native/base64';
     SplashScreen,
     Camera,
     ImagePicker,
-    FileTransfer,
     Base64,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
