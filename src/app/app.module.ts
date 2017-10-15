@@ -4,7 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
-import { HistoricPage } from '../pages/historic/historic';
+import { InstructionsPage } from '../pages/instructions/instructions';
 import { HomePage } from '../pages/home/home';
 import { DfhResultsModal } from '../pages/home/dfhResultsModal';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -19,7 +19,7 @@ import { Base64 } from '@ionic-native/base64';
   declarations: [
     MyApp,
     AboutPage,
-    HistoricPage,
+    InstructionsPage,
     HomePage,
     TabsPage,
     DfhResultsModal
@@ -32,7 +32,7 @@ import { Base64 } from '@ionic-native/base64';
   entryComponents: [
     MyApp,
     AboutPage,
-    HistoricPage,
+    InstructionsPage,
     HomePage,
     TabsPage,
     DfhResultsModal
