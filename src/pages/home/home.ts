@@ -14,6 +14,8 @@ import { DfhResultsModal } from '../home/dfhResultsModal';
 export class HomePage {
 
   public base64Image: string;
+  genero = 'm';
+  idade = 6;
 
   constructor(public modalCtrl: ModalController, private camera: Camera, private imagePicker: ImagePicker, private base64: Base64) {
 
@@ -57,6 +59,8 @@ export class HomePage {
 
   showResults() {
     console.log("Avaliar")
+    console.log(this.genero)
+    console.log(this.idade)
     let resultsModal = this.modalCtrl.create(DfhResultsModal);
     resultsModal.present();
   } 

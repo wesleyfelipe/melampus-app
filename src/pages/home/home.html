@@ -6,7 +6,7 @@
 
 <ion-content padding>
 
-  <h2>Bem vindo ao Melampus.</h2>
+  <h2>Bem vindo ao Melampus!</h2>
 
   <p>Para realizar a análise automática do DFH (Desenho da Figura Humana), informe a idade e o gênero do autor do desenho. </p>
 
@@ -14,7 +14,7 @@
     <ion-col text-center>
 
   <ion-label color="primary">Gênero*</ion-label>
-  <ion-list radio-group>
+  <ion-list radio-group [(ngModel)]="genero" >
     <ion-item>
       <ion-label>Menino</ion-label>
       <ion-radio value="m" checked></ion-radio>
@@ -30,14 +30,14 @@
 
   <ion-label color="primary">Idade*</ion-label>
    <ion-item>
-    <ion-range min="6" max="12">
+    <ion-range [(ngModel)]="idade" min="6" max="12"  pin="true">
       <ion-label range-left>6</ion-label>
       <ion-label range-right>12</ion-label>
     </ion-range>
   </ion-item>
 
   </ion-col>
-  </ion-row>
+  </ion-row> 
 
    <ion-row>
     <ion-col text-center>
