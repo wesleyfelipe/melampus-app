@@ -5,4 +5,10 @@ page-instructions {
 	   bottom:inherit;
 	}
 
+	$slides-pagination-bullet-color-active:
+		color($colors, primary) !default;
+		.swiper-pagination-bullet-active {
+		  background: $slides-pagination-bullet-color-active;
+		}
+
 }
