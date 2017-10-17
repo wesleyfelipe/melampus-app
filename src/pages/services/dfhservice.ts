@@ -1,8 +1,6 @@
 
-import {Injectable} from '@angular/core';
-import { FileUploadOptions } from '@ionic-native/file-transfer';
-import { File } from '@ionic-native/file';
-
+import { Injectable } from '@angular/core';
+import { FileTransfer, FileTransferObject, FileUploadOptions } from '@ionic-native/file-transfer';
 
 @Injectable()
 export class DfhService {  
@@ -12,8 +10,8 @@ export class DfhService {
     base64Image : string;
     resultadoAvaliacao = {};
     mensagemErro: string;
- 
-    constructor() {
+
+    constructor(private transfer: FileTransfer) {
 
     }
   
@@ -43,8 +41,29 @@ export class DfhService {
         return this.resultadoAvaliacao;
     }
 
-    callEcDfhF912Api(){
+    callEcDfhF912Api(image){
+        let fileTransfer: FileTransferObject = this.transfer.create();
+
+        let options: FileUploadOptions = {
+             fileKey: 'file',
+             fileName: 'name.jpg',
+             chunkedMode: false
+          }
+
+          //encodeURI('http://192.168.1.5:5000/ec-dfh-f-9-12')
+            
         console.log("Call API")
+
+        let path = encodeURI('http://192.168.1.5:5000/ec-dfh-f-9-12');
+        console.log(path)
+
+        fileTransfer.upload(image, path, options)
+            .then((data) => {
+                console.log("OK")
+            }, (err) => {
+                console.log("Erro")
+                 console.log(JSON.stringify(err))
+            });
     }
 
     avaliar(idade, genero, base64Image){
@@ -60,7 +79,7 @@ export class DfhService {
             this.mensagemErro = "O Melampus ainda não está preparado para avaliar crianças menores de 9 anos."
             this.resultadoAvaliacao = null;
         } else {
-            this.callEcDfhF912Api()
+            this.callEcDfhF912Api(this.base64Image)
         }
 
     }

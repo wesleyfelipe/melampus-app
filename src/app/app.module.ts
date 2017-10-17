@@ -1,8 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler, Platform } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { FileTransfer } from '@ionic-native/file-transfer';
 
 import { AboutPage } from '../pages/about/about';
 import { InstructionsPage } from '../pages/instructions/instructions';
@@ -16,6 +15,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
+import { FileTransfer } from '@ionic-native/file-transfer';
+
 
 @NgModule({
   declarations: [
@@ -50,4 +51,11 @@ import { Base64 } from '@ionic-native/base64';
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
-export class AppModule {}
+export class AppModule {
+  //constructor(public platform: Platform) {
+   // this.platform.ready().then((readySource) => {
+   //   console.log('Platform ready');
+      // Platform now ready, execute any required native code 
+   // });
+  //}
+}
