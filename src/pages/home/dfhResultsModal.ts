@@ -19,7 +19,7 @@ export class DfhResultsModal {
    getResultadoAvaliacao(){
    	this.mensagemErro = this.dfhService.getMensagemErro();
    	this.resultadoAvaliacao = this.dfhService.getResultadoAvaliacao();
-   	console.log(this.mensagemErro );
+   	console.log(this.resultadoAvaliacao );
    }
 
    dismiss() {

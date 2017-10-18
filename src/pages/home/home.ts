@@ -25,7 +25,9 @@ export class HomePage {
       quality: 50,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
+      mediaType: this.camera.MediaType.PICTURE,
+      cameraDirection: 0,
+      correctOrientation: true
     }
 
     this.camera.getPicture(options).then((imageData) => {
@@ -36,10 +38,10 @@ export class HomePage {
   }
 
   showResults() {
-    this.dfhService.avaliar(this.idade, this.genero, this.base64Image);
-    let resultsModal = this.modalCtrl.create(DfhResultsModal);
-    resultsModal.present();
-
-  } 
-
+    this.dfhService.avaliar(this.idade, this.genero, this.base64Image).then(() => {
+        console.log("Promise")
+        let resultsModal = this.modalCtrl.create(DfhResultsModal);
+        resultsModal.present();
+      });
+   } 
 }

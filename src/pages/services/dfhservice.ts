@@ -41,46 +41,47 @@ export class DfhService {
         return this.resultadoAvaliacao;
     }
 
-    callEcDfhF912Api(image){
+    callEcDfhF912Api(image) {
         let fileTransfer: FileTransferObject = this.transfer.create();
 
         let options: FileUploadOptions = {
              fileKey: 'file',
-             fileName: 'name.jpg',
+             fileName: 'dfh.jpg',
              chunkedMode: false
-          }
-
-          //encodeURI('http://192.168.1.5:5000/ec-dfh-f-9-12')
-            
-        console.log("Call API")
+        }
 
         let path = encodeURI('http://192.168.1.5:5000/ec-dfh-f-9-12');
-        console.log(path)
 
-        fileTransfer.upload(image, path, options)
-            .then((data) => {
-                console.log("OK")
-            }, (err) => {
-                console.log("Erro")
-                 console.log(JSON.stringify(err))
-            });
+        return fileTransfer.upload(image, path, options);
     }
 
-    avaliar(idade, genero, base64Image){
+    avaliar(idade, genero, base64Image): Promise{
         this.setAvaliado(idade, genero, base64Image);
 
         this.mensagemErro = null;
         this.resultadoAvaliacao = null;
 
-        if(this.genero === 'm'){
-            this.mensagemErro = "O Melampus ainda não está preparado para avaliar meninos.";
-            this.resultadoAvaliacao = null;
-        } else if(this.idade < 9){
-            this.mensagemErro = "O Melampus ainda não está preparado para avaliar crianças menores de 9 anos."
-            this.resultadoAvaliacao = null;
-        } else {
-            this.callEcDfhF912Api(this.base64Image)
-        }
+        return new Promise( (resolve, reject) => {
 
+            if(this.genero === 'm'){
+                this.mensagemErro = "O Melampus ainda não está preparado para avaliar meninos.";
+                this.resultadoAvaliacao = null;
+                resolve()
+            } else if(this.idade < 9){
+                this.mensagemErro = "O Melampus ainda não está preparado para avaliar crianças menores de 9 anos."
+                this.resultadoAvaliacao = null;
+                resolve()
+            } else {
+                this.callEcDfhF912Api(this.base64Image).then((data) => {
+                    console.log("OK")
+                    this.resultadoAvaliacao = data.response;
+                    resolve()
+                }, (err) => {
+                    this.mensagemErro = "Erro na Integração Backend";
+                    console.log(JSON.stringify(err))
+                    resolve()
+                });
+            }
+        });
     }
 }
