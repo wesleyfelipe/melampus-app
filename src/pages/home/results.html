@@ -1,8 +1,30 @@
 <ion-content padding>
 
 <ion-row>
-	<ion-col text-center>
+	<ion-col text-center class="msg-erro" [hidden]="!mensagemErro">
 		<p>{{mensagemErro}}</p>
+	</ion-col>
+</ion-row>
+<ion-row [ngClass]="{'escore-inconclusivo': resultadoAvaliacao.idInstrucao==0, 'escore-sem-ind': resultadoAvaliacao.idInstrucao==1, 'escore-sugestao': resultadoAvaliacao.idInstrucao==2, 'escore-ind-entrevista' : resultadoAvaliacao.idInstrucao==3, 'escore-necessidade-entrevista': resultadoAvaliacao.idInstrucao==4, 'escore-avaliacao-necessaria': resultadoAvaliacao.idInstrucao==5}">
+	<ion-col text-center>
+		<p>{{resultadoAvaliacao.instrucao}}</p> 
+	</ion-col>
+</ion-row>
+<ion-row [ngClass]="{'escore-inconclusivo': resultadoAvaliacao.idInstrucao==0, 'escore-sem-ind': resultadoAvaliacao.idInstrucao==1, 'escore-sugestao': resultadoAvaliacao.idInstrucao==2, 'escore-ind-entrevista' : resultadoAvaliacao.idInstrucao==3, 'escore-necessidade-entrevista': resultadoAvaliacao.idInstrucao==4, 'escore-avaliacao-necessaria': resultadoAvaliacao.idInstrucao==5}">
+	<ion-col>
+		<p>Escore Final</p>
+	</ion-col> 
+	<ion-col text-right>
+		<p>{{resultadoAvaliacao.escoreFinal}}</p>
+	</ion-col>
+</ion-row>
+
+<ion-row *ngFor="let item of resultadoAvaliacao.itens">
+	<ion-col>
+		<p>{{item.item}}</p>
+	</ion-col>
+	<ion-col text-right>
+		<p>{{item.resultadoAvaliado === 'A' ? 'Não' : item.resultadoAvaliado === 'P' ? 'Sim' : 'Indefinido'}}</p>
 	</ion-col>
 </ion-row>
 

@@ -55,13 +55,13 @@ export class DfhService {
         return fileTransfer.upload(image, path, options);
     }
 
-    avaliar(idade, genero, base64Image): Promise{
+    avaliar(idade, genero, base64Image): Promise<void>{
         this.setAvaliado(idade, genero, base64Image);
 
         this.mensagemErro = null;
         this.resultadoAvaliacao = null;
 
-        return new Promise( (resolve, reject) => {
+        return new Promise<void>( (resolve, reject) => {
 
             if(this.genero === 'm'){
                 this.mensagemErro = "O Melampus ainda não está preparado para avaliar meninos.";
@@ -73,8 +73,8 @@ export class DfhService {
                 resolve()
             } else {
                 this.callEcDfhF912Api(this.base64Image).then((data) => {
-                    console.log("OK")
-                    this.resultadoAvaliacao = data.response;
+                    this.resultadoAvaliacao =  JSON.parse(data.response);
+                    //this.resultadoAvaliacao.escoreFinal = 2
                     resolve()
                 }, (err) => {
                     this.mensagemErro = "Erro na Integração Backend";
